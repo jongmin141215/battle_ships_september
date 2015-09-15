@@ -8,6 +8,10 @@ class Board
 		end
 	end
 
+	def print_board
+		"<p>#{@grid}</p>"
+	end
+
 	def place(ship, coord, orientation = :horizontally)
 		coords = [coord]
 		(ship.size - 1).times{coords << next_coord(coords.last, orientation)}

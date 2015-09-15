@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative '../game_setup'
 
 class BattleshipsWeb < Sinatra::Base
   get '/' do
@@ -12,6 +13,11 @@ class BattleshipsWeb < Sinatra::Base
   get '/greetings' do
     @visitor = params[:name]
     erb :greetings
+  end
+
+  get '/game_board' do
+    @board = Board.new(Cell).print_board
+    erb :game_board
   end
 
 set :views, proc { File.join(root, '..', 'views') }

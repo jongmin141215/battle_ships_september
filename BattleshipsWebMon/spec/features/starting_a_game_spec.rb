@@ -21,4 +21,10 @@ feature 'Starting a new game' do
     expect(page).to have_content "Please enter a name!"
   end
 
+  scenario 'pressing start game button takes me to board' do 
+    visit '/greetings'
+    click_link("Start Game")
+    expect(page).to have_content "Game Board"
+  end
+
 end
