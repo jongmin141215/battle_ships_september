@@ -1,0 +1,15 @@
+<div>
+  <% if @visitor == '' %>
+    <div>
+      Please enter a name!
+      <form action="/greetings">
+        <input type="text" name="name">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  <% else %>
+    <div>
+      Greetings <%= @visitor %>!
+    </div>
+  <% end %>
+</div>
