@@ -26,11 +26,19 @@ Game Board
   <% end %>
 </div>
 
-<form>
-  Place Destroyer:  
-  <input type="text" name="coordinates">
-  <input type="text" name="orientation">
+<form action="/game_board">
+  Place Destroyer:
+  <input type="text" name="coordinates_1">
+  <input type="radio" name="orientation_1" value="horizontally" checked> Horizontally
+  <input type="radio" name="orientation_1" value="vertically"> Vertically
   <input type="submit" value="Place">
 </form>
-
-<%= params %> 
+<form action="/game_board">
+  Place Battleship:
+  <input type="text" name="coordinates_2">
+  <input type="radio" name="orientation_2" value="horizontally" checked> Horizontally
+  <input type="radio" name="orientation_2" value="vertically"> Vertically
+  <input type="submit" value="Place">
+</form>
+params<%= params %>
+sessions<%= session %>

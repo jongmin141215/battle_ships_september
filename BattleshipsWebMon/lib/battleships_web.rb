@@ -2,6 +2,7 @@ require 'sinatra/base'
 require_relative '../game_setup'
 
 class BattleshipsWeb < Sinatra::Base
+  enable :sessions
   get '/' do
     erb :index
   end
@@ -18,11 +19,19 @@ class BattleshipsWeb < Sinatra::Base
   get '/game_board' do
     @destroyer = Ship.destroyer
     @board = Board.new(Cell)
-    coordinates = params[:coordinates].to_sym
-    orientation = params[:orientation].to_sym
-    if coordinates && orientation
-      @board.place(@destroyer, coordinates, orientation)
+    session[:coordinates_1] = params[:coordinates_1].to_sym if params[:coordinates_1]
+    session[:orientation_1] = params[:orientation_1].to_sym if params[:orientation_1]
+    if session[:coordinates_1] && session[:orientation_1]
+      @board.place(@destroyer, session[:coordinates_1], session[:orientation_1])
     end
+
+    @battleship = Ship.battleship
+    session[:coordinates_2] = params[:coordinates_2].to_sym if params[:coordinates_2]
+    session[:orientation_2] = params[:orientation_2].to_sym if params[:orientation_2]
+    if session[:coordinates_2] && session[:orientation_2]
+      @board.place(@battleship, session[:coordinates_2], session[:orientation_2])
+    end
+
     erb :game_board
   end
 
