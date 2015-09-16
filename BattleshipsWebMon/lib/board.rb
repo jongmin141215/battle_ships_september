@@ -11,7 +11,6 @@ class Board
 		end
 	end
 
-
 	def place(ship, coord, orientation = :horizontally)
 		coords = [coord]
 		(ship.size - 1).times{coords << next_coord(coords.last, orientation)}

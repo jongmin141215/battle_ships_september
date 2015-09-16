@@ -1,5 +1,6 @@
 class Cell
 	attr_accessor :content
+	attr_reader :hit
 	def initialize
 		@hit = false
 	end

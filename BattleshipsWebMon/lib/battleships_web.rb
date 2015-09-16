@@ -49,7 +49,8 @@ class BattleshipsWeb < Sinatra::Base
       if coordinates_5 && orientation_5
         $board.place(@submarine, coordinates_5, orientation_5)
       end
-    # $board.shoot_at()
+    @fire = params[:fire].to_sym if params[:fire]
+    $board.shoot_at(@fire) if @fire
     erb :game_board
   end
 

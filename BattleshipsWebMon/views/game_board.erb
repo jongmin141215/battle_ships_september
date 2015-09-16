@@ -13,16 +13,31 @@
 <div style='display: inline-block; border: 2px solid white; height:370px; width:385px; '>
   <% $board.grid.each do |key, value| %>
     <% if value.content.is_a? Water %>
-      <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff; border-radius: 5px'>
-        <% key %>
-      </div>
+      <% if value.hit == true %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:white; border-radius: 5px'>
+          <% key %>
+        </div>
+      <% else %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff; border-radius: 5px'>
+          <% key %>
+        </div>
+      <% end %>
     <% else %>
-       <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#ffff32; border-radius: 5px'>
-        <% key %>
-       </div>
+      <% if value.hit == true %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:red; border-radius: 5px'>
+          <% key %>
+        </div>
+      <% else %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#ffff32; border-radius: 5px'>
+          <% key %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
+
+
+
 
 <form action="/game_board">
   <div>
@@ -61,3 +76,10 @@
   <input type="radio" name="orientation_5" value="vertically"> Vertically
   <input type="submit" value="Place">
 </form>
+
+<form action="/game_board">
+  Fire
+  <input type="text" name="fire">
+  <input type="submit" value="Fire!">
+</form>
+params <%= params %>
