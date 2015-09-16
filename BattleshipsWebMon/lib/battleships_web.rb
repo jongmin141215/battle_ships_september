@@ -3,6 +3,11 @@ require_relative '../game_setup'
 
 class BattleshipsWeb < Sinatra::Base
   enable :sessions
+
+  before do
+    $board ||= Board.new(Cell)
+  end
+
   get '/' do
     erb :index
   end
@@ -13,7 +18,6 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/greetings' do
     @visitor = params[:name]
-    $board = Board.new(Cell)
     erb :greetings
   end
 
@@ -29,6 +33,24 @@ class BattleshipsWeb < Sinatra::Base
     orientation_2 = params[:orientation_2].to_sym if params[:orientation_2]
       if coordinates_2 && orientation_2
         $board.place(@battleship, coordinates_2, orientation_2)
+      end
+    @aircraft_carrier = Ship.aircraft_carrier
+    coordinates_3 = params[:coordinates_3].to_sym if params[:coordinates_3]
+    orientation_3 = params[:orientation_3].to_sym if params[:orientation_3]
+      if coordinates_3 && orientation_3
+        $board.place(@aircraft_carrier, coordinates_3, orientation_3)
+      end
+    @patrol_boat = Ship.patrol_boat
+    coordinates_4 = params[:coordinates_4].to_sym if params[:coordinates_4]
+    orientation_4 = params[:orientation_4].to_sym if params[:orientation_4]
+      if coordinates_4 && orientation_4
+        $board.place(@patrol_boat, coordinates_4, orientation_4)
+      end
+    @submarine = Ship.submarine
+    coordinates_5 = params[:coordinates_5].to_sym if params[:coordinates_5]
+    orientation_5 = params[:orientation_5].to_sym if params[:orientation_5]
+      if coordinates_5 && orientation_5
+        $board.place(@submarine, coordinates_5, orientation_5)
       end
     erb :game_board
   end

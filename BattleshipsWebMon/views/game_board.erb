@@ -1,6 +1,3 @@
-Game Board
-<%= p $board.grid %>
-
 <table style="width:375px; margin-left: 30px">
   <tr>
     <% (1..10).to_a.each do |x| %>
@@ -41,4 +38,24 @@ Game Board
   <input type="radio" name="orientation_2" value="vertically"> Vertically
   <input type="submit" value="Place">
 </form>
-params<%= params %>
+<form action="/game_board">
+  Place Aircraft Carrier:
+  <input type="text" name="coordinates_3">
+  <input type="radio" name="orientation_3" value="horizontally" checked> Horizontally
+  <input type="radio" name="orientation_3" value="vertically"> Vertically
+  <input type="submit" value="Place">
+</form>
+<form action="/game_board">
+  Place Patrol Boat:
+  <input type="text" name="coordinates_4">
+  <input type="radio" name="orientation_4" value="horizontally" checked> Horizontally
+  <input type="radio" name="orientation_4" value="vertically"> Vertically
+  <input type="submit" value="Place">
+</form>
+<form action="/game_board">
+  Place Submarine:
+  <input type="text" name="coordinates_5">
+  <input type="radio" name="orientation_5" value="horizontally" checked> Horizontally
+  <input type="radio" name="orientation_5" value="vertically"> Vertically
+  <input type="submit" value="Place">
+</form>
