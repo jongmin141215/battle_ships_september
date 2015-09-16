@@ -25,11 +25,13 @@
 </div>
 
 <form action="/game_board">
-  Place Destroyer:
-  <input type="text" name="coordinates_1">
-  <input type="radio" name="orientation_1" value="horizontally" checked> Horizontally
-  <input type="radio" name="orientation_1" value="vertically"> Vertically
-  <input type="submit" value="Place">
+  <div id="destoyer_radio">
+    Place Destroyer:
+    <input type="text" name="coordinates_1">
+    <input type="radio" name="orientation_1" value="horizontally" checked> Horizontally
+    <input type="radio" name="orientation_1" value="vertically"> Vertically
+    <input type="submit" value="Place">
+  </div>
 </form>
 <form action="/game_board">
   Place Battleship:

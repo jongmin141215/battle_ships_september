@@ -4,10 +4,6 @@ require_relative '../game_setup'
 class BattleshipsWeb < Sinatra::Base
   enable :sessions
 
-  before do
-    $board ||= Board.new(Cell)
-  end
-
   get '/' do
     erb :index
   end
@@ -18,6 +14,7 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/greetings' do
     @visitor = params[:name]
+    $board = Board.new(Cell)
     erb :greetings
   end
 

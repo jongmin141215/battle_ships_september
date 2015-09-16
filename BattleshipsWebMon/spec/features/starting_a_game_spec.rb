@@ -24,7 +24,15 @@ feature 'Starting a new game' do
   scenario 'pressing start game button takes me to board' do 
     visit '/greetings'
     click_link("Start Game")
-    expect(page).to have_content "Game Board"
+    expect(page).to have_content "A"
+  end
+
+  scenario 'can add ships to the board' do
+    visit '/game_board'
+    fill_in('coordinates_1', :with => 'A1')
+    # choose('Horizontally')
+    click_button("#destoyer_radio")
+    expect(page).to have_css("#ffff32")
   end
 
 end
