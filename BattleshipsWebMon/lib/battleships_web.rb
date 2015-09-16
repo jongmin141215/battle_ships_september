@@ -49,6 +49,7 @@ class BattleshipsWeb < Sinatra::Base
       if coordinates_5 && orientation_5
         $board.place(@submarine, coordinates_5, orientation_5)
       end
+    # $board.shoot_at()
     erb :game_board
   end
 

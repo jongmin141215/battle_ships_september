@@ -21,17 +21,19 @@ feature 'Starting a new game' do
     expect(page).to have_content "Please enter a name!"
   end
 
-  scenario 'pressing start game button takes me to board' do 
+  scenario 'pressing start game button takes me to board' do
     visit '/greetings'
     click_link("Start Game")
     expect(page).to have_content "A"
   end
 
   scenario 'can add ships to the board' do
-    visit '/game_board'
-    fill_in('coordinates_1', :with => 'A1')
+    visit '/game_board?coordinates_1=A1&orientation_1=horizontally'
+    # fill_in('coordinates_1', :with => 'A1')
+    # within("#destoyer_radio") do
     # choose('Horizontally')
-    click_button("#destoyer_radio")
+      # click_button("Place")
+    # end
     expect(page).to have_css("#ffff32")
   end
 
