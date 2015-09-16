@@ -1,5 +1,4 @@
 Game Board
-
 <table style="width:375px; margin-left: 30px">
   <tr>
     <% (1..10).to_a.each do |x| %>
@@ -13,7 +12,7 @@ Game Board
   <% end %>
 </div>
 <div style='display: inline-block; border: 2px solid white; height:370px; width:385px'>
-  <% @board.grid.each do |key, value| %>
+  <% $board.grid.each do |key, value| %>
     <% if value.content.is_a? Water %>
       <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff'>
         <% key %>
@@ -41,4 +40,3 @@ Game Board
   <input type="submit" value="Place">
 </form>
 params<%= params %>
-sessions<%= session %>
