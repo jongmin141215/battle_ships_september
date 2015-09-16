@@ -13,13 +13,11 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/greetings' do
     @visitor = params[:name]
-      $board = Board.new(Cell)
+    $board = Board.new(Cell)
     erb :greetings
-
   end
 
   get '/game_board' do
-
     @destroyer = Ship.destroyer
     coordinates_1 = params[:coordinates_1].to_sym if params[:coordinates_1]
     orientation_1 = params[:orientation_1].to_sym if params[:orientation_1]
