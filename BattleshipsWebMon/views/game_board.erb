@@ -10,26 +10,26 @@
     <div style="height: 38px"><%= x %></div>
   <% end %>
 </div>
-<div style='display: inline-block; border: 2px solid white; height:370px; width:385px; '>
-  <% $board.grid.each do |key, value| %>
-    <% if value.content.is_a? Water %>
-      <% if value.hit == true %>
+<div style='display: inline-block; border: 2px solid white; height:370px; width:385px'>
+  <% $board.grid.each do |cell| %>
+    <% if cell[1].content.is_a? Water %>
+      <% if cell[1].hit == true %>
         <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:white; border-radius: 5px'>
-          <% key %>
+          <% cell %>
         </div>
       <% else %>
         <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff; border-radius: 5px'>
-          <% key %>
+          <% cell %>
         </div>
       <% end %>
     <% else %>
-      <% if value.hit == true %>
+      <% if cell[1].hit == true %>
         <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:red; border-radius: 5px'>
-          <% key %>
+          <% cell %>
         </div>
       <% else %>
         <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#ffff32; border-radius: 5px'>
-          <% key %>
+          <% cell %>
         </div>
       <% end %>
     <% end %>
