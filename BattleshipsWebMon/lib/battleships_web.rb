@@ -17,21 +17,22 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/game_board' do
-    @destroyer = Ship.destroyer
-    @board = Board.new(Cell)
-    session[:coordinates_1] = params[:coordinates_1].to_sym if params[:coordinates_1]
-    session[:orientation_1] = params[:orientation_1].to_sym if params[:orientation_1]
-    if session[:coordinates_1] && session[:orientation_1]
-      @board.place(@destroyer, session[:coordinates_1], session[:orientation_1])
-    end
-
-    @battleship = Ship.battleship
-    session[:coordinates_2] = params[:coordinates_2].to_sym if params[:coordinates_2]
-    session[:orientation_2] = params[:orientation_2].to_sym if params[:orientation_2]
-    if session[:coordinates_2] && session[:orientation_2]
-      @board.place(@battleship, session[:coordinates_2], session[:orientation_2])
-    end
-
+    if @board 
+      @destroyer = Ship.destroyer
+      coordinates_1 = params[:coordinates_1].to_sym if params[:coordinates_1]
+      orientation_1 = params[:orientation_1].to_sym if params[:orientation_1]
+        if coordinates_1 && orientation_1
+          @board.place(@destroyer, coordinates_1, orientation_1)
+        end
+      @battleship = Ship.battleship
+      coordinates_2 = params[:coordinates_2].to_sym if params[:coordinates_2]
+      orientation_2 = params[:orientation_2].to_sym if params[:orientation_2]
+        if coordinates_2 && orientation_2
+          @board.place(@battleship, coordinates_2, orientation_2)
+        end
+     else
+       @board = Board.new(Cell)
+     end
     erb :game_board
   end
 
