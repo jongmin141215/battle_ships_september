@@ -20,8 +20,17 @@ Game Board
       </div>
     <% else %>
        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#ffff32'>
-        <%=key %>
+        <% key %>
        </div>
     <% end %>
   <% end %>
 </div>
+
+<form>
+  Place Destroyer:  
+  <input type="text" name="coordinates">
+  <input type="text" name="orientation">
+  <input type="submit" value="Place">
+</form>
+
+<%= params %> 

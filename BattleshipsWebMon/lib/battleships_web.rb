@@ -16,7 +16,13 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/game_board' do
+    @destroyer = Ship.destroyer
     @board = Board.new(Cell)
+    coordinates = params[:coordinates].to_sym
+    orientation = params[:orientation].to_sym
+    if coordinates && orientation
+      @board.place(@destroyer, coordinates, orientation)
+    end
     erb :game_board
   end
 
