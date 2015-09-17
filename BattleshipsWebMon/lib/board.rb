@@ -34,7 +34,12 @@ class Board
 		grid[coordinate].shoot
 	end
 
-
+	def fire_randomly
+		coords = grid.map { |k, v| k }
+		shoot_at(coords[rand(101)])
+	rescue
+		fire_randomly
+	end
 
 	def ships
 		grid.values.select{|cell|is_a_ship?(cell)}.map(&:content).uniq

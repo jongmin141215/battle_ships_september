@@ -59,6 +59,10 @@ class BattleshipsWeb < Sinatra::Base
     end
     @fire = params[:fire].to_sym if params[:fire]
     $computer_board.shoot_at(@fire) if @fire
+
+    if $board.ships.size >= 5
+      $board.fire_randomly
+    end
     erb :vs_computer
   end
 

@@ -29,14 +29,14 @@ feature 'Starting a new game' do
   scenario 'pressing play with computer takes me to a game with computer' do
     visit '/greetings'
     click_link 'Play with Computer'
-    expect(page).to have_content "A"
+    expect(page).to have_content "A B C D E F G H I J"
   end
 
-  scenario 'pressing start game button takes me to board' do
-    visit '/greetings'
-    click_link("Start Game")
-    expect(page).to have_content "A"
-  end
+  # scenario 'pressing start game button takes me to board' do
+  #   visit '/greetings'
+  #   click_link("Start Game")
+  #   expect(page).to have_content "A"
+  # end
 
 
 
