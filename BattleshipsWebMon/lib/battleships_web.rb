@@ -18,6 +18,15 @@ class BattleshipsWeb < Sinatra::Base
     erb :greetings
   end
 
+  get '/vs_computer' do
+    $board.place_ship_randomly(2)
+    $board.place_ship_randomly(3)
+    $board.place_ship_randomly(3)
+    $board.place_ship_randomly(4)
+    $board.place_ship_randomly(5)
+    erb :vs_computer
+  end
+
   get '/game_board' do
     @destroyer = Ship.destroyer
     coordinates_1 = params[:coordinates_1].to_sym if params[:coordinates_1]

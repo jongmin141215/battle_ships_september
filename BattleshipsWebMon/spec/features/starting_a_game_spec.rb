@@ -20,6 +20,17 @@ feature 'Starting a new game' do
     click_button('Submit')
     expect(page).to have_content "Please enter a name!"
   end
+  scenario 'pressing submit button shows two options' do
+    visit '/greetings?name=Jongmin'
+    expect(page).to have_content "Start Game"
+    expect(page).to have_content "Play with Computer"
+  end
+
+  scenario 'pressing play with computer takes me to a game with computer' do
+    visit '/greetings'
+    click_link 'Play with Computer'
+    expect(page).to have_content "A"
+  end
 
   scenario 'pressing start game button takes me to board' do
     visit '/greetings'
@@ -27,14 +38,16 @@ feature 'Starting a new game' do
     expect(page).to have_content "A"
   end
 
-  scenario 'can add ships to the board' do
-    visit '/game_board?coordinates_1=A1&orientation_1=horizontally'
-    # fill_in('coordinates_1', :with => 'A1')
-    # within("#destoyer_radio") do
-    # choose('Horizontally')
-      # click_button("Place")
-    # end
-    expect(page).to have_css("#ffff32")
-  end
+
+
+  # scenario 'can add ships to the board' do
+  #   visit '/game_board?coordinates_1=A1&orientation_1=horizontally'
+  #   # fill_in('coordinates_1', :with => 'A1')
+  #   # within("#destoyer_radio") do
+  #   # choose('Horizontally')
+  #     # click_button("Place")
+  #   # end
+  #   expect(page).to have_css("#ffff32")
+  # end
 
 end

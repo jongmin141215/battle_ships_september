@@ -90,4 +90,8 @@ describe Board do
 		expect{board.place(ship,:A1)}.to raise_error "You cannot place a ship on another ship"
 	end
 
+	xit "can place 5 ships randomly on the board (For games with computer)" do
+
+	end
+
 end

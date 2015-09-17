@@ -17,6 +17,14 @@ class Board
 		put_on_grid_if_possible(coords, ship)
 	end
 
+	def place_ship_randomly(size = 2)
+		coords = grid.map { |k, v| k }
+		orientation = [:horizontally, :vertically]
+		place(Ship.new(size), coords[rand(101)], orientation[rand(2)])
+	rescue
+		place_ship_randomly(size)
+	end
+
 	def floating_ships?
 		ships.any?(&:floating?)
 	end
