@@ -19,11 +19,15 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/vs_computer' do
-    $board.place_ship_randomly(2)
-    $board.place_ship_randomly(3)
-    $board.place_ship_randomly(3)
-    $board.place_ship_randomly(4)
-    $board.place_ship_randomly(5)
+    if $board.ships.size == 0
+      $board.place_ship_randomly(2)
+      $board.place_ship_randomly(3)
+      $board.place_ship_randomly(3)
+      $board.place_ship_randomly(4)
+      $board.place_ship_randomly(5)
+    end
+    @fire = params[:fire].to_sym if params[:fire]
+    $board.shoot_at(@fire) if @fire
     erb :vs_computer
   end
 
