@@ -32,6 +32,12 @@ feature 'Starting a new game' do
     expect(page).to have_content "A B C D E F G H I J"
   end
 
+  scenario '' do
+    visit '/greetings'
+    click_link 'Play with Computer'
+    expect(page).to have_content "A B C D E F G H I J"
+  end
+
   # scenario 'pressing start game button takes me to board' do
   #   visit '/greetings'
   #   click_link("Start Game")

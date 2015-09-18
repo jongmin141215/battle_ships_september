@@ -92,7 +92,12 @@ describe Board do
 
 	xit "can place a ship randomly on the board" do
 		allow(Kernel).to receive(:rand).and_return(0)
-		subject.place_ship_randomly(2).to eq([:A1, :A2])
+		expect(subject.place_ship_randomly(2)).to eq([:A1, :A2])
+	end
+
+	xit "can fire randomly" do
+		# allow(Kernel).to receive(:rand).and_return(0)
+		expect(subject.fire_randomly).to be_true
 	end
 
 end

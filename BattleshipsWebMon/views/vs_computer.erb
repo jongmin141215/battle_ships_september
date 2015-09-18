@@ -29,7 +29,7 @@
             <% cell %>
           </div>
         <% else %>
-          <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff; border-radius: 5px'>
+          <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:yellow; border-radius: 5px'>
             <% cell %>
           </div>
         <% end %>
@@ -40,90 +40,47 @@
 
 
 
-
-<div stlye="display: inline-block; float: right">
-  <table style="width:375px; margin-left: 30px">
-    <tr>
-      <% (1..10).to_a.each do |x| %>
-        <td> <%= x %> </td>
-      <% end %>
-    </tr>
-  </table>
-  <div style='display: inline-block; height: 370px'>
-    <% ('A'..'J').to_a.each do |x| %>
-      <div style="height: 38px"><%= x %></div>
+<table style="width:375px; margin-left: 30px">
+  <tr>
+    <% (1..10).to_a.each do |x| %>
+      <td> <%= x %> </td>
     <% end %>
-  </div>
-  <div style='display: inline-block; border: 2px solid white; height:370px; width:385px'>
-    <% $board.grid.each do |cell| %>
-      <% if cell[1].content.is_a? Water %>
-        <% if cell[1].hit == true %>
-          <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:white; border-radius: 5px'>
-            <% cell %>
-          </div>
-        <% else %>
-          <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff; border-radius: 5px'>
-            <% cell %>
-          </div>
-        <% end %>
+  </tr>
+</table>
+<div style='display: inline-block; height: 370px'>
+  <% ('A'..'J').to_a.each do |x| %>
+    <div style="height: 38px"><%= x %></div>
+  <% end %>
+</div>
+<div style='display: inline-block; border: 2px solid white; height:370px; width:385px'>
+  <% $board.grid.each do |cell| %>
+    <% if cell[1].content.is_a? Water %>
+      <% if cell[1].hit == true %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:white; border-radius: 5px'>
+          <% cell %>
+        </div>
       <% else %>
-        <% if cell[1].hit == true %>
-          <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:red; border-radius: 5px'>
-            <% cell %>
-          </div>
-        <% else %>
-          <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#ffff32; border-radius: 5px'>
-            <% cell %>
-          </div>
-        <% end %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#c6e2ff; border-radius: 5px'>
+          <% cell %>
+        </div>
+      <% end %>
+    <% else %>
+      <% if cell[1].hit == true %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:red; border-radius: 5px'>
+          <% cell %>
+        </div>
+      <% else %>
+        <div style='display: inline-block; border: 1px solid grey; height:30px; width:30px; background-color:#ffff32; border-radius: 5px'>
+          <% cell %>
+        </div>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 </div>
 
-<form action="/vs_computer" style="display: inline-block">
+
+<form action="/fire" method="post">
   Fire
   <input type="text" name="fire">
   <input type="submit" value="Fire!">
 </form>
-
-
-<div>
-  <form action="/vs_computer">
-    <div>
-      Place Destroyer (size 3):
-      <input type="text" name="coordinates_1">
-      <input type="radio" name="orientation_1" value="horizontally" checked> Horizontally
-      <input type="radio" name="orientation_1" value="vertically"> Vertically
-      <input type="submit" value="Place">
-    </div>
-  </form>
-  <form action="/vs_computer">
-    Place Battleship (size 4):
-    <input type="text" name="coordinates_2">
-    <input type="radio" name="orientation_2" value="horizontally" checked> Horizontally
-    <input type="radio" name="orientation_2" value="vertically"> Vertically
-    <input type="submit" value="Place">
-  </form>
-  <form action="/vs_computer">
-    Place Aircraft Carrier (size 5):
-    <input type="text" name="coordinates_3">
-    <input type="radio" name="orientation_3" value="horizontally" checked> Horizontally
-    <input type="radio" name="orientation_3" value="vertically"> Vertically
-    <input type="submit" value="Place">
-  </form>
-  <form action="/vs_computer">
-    Place Patrol Boat (size 2):
-    <input type="text" name="coordinates_4">
-    <input type="radio" name="orientation_4" value="horizontally" checked> Horizontally
-    <input type="radio" name="orientation_4" value="vertically"> Vertically
-    <input type="submit" value="Place">
-  </form>
-  <form action="/vs_computer">
-    Place Submarine (size 3):
-    <input type="text" name="coordinates_5">
-    <input type="radio" name="orientation_5" value="horizontally" checked> Horizontally
-    <input type="radio" name="orientation_5" value="vertically"> Vertically
-    <input type="submit" value="Place">
-  </form>
-</div>
