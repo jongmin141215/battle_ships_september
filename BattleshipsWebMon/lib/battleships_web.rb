@@ -58,7 +58,7 @@ class BattleshipsWeb < Sinatra::Base
 
   get '/vs_computer' do
     if $board.all_ships_sunk? || $computer_board.all_ships_sunk?
-      redirect to('result')  
+      redirect to('result')
     end
     erb :vs_computer
   end
@@ -69,9 +69,8 @@ class BattleshipsWeb < Sinatra::Base
 
 
 
-  get '/game_board' do
-
-    erb :game_board
+  get '/vs_friend' do
+    erb :vs_friend
   end
 
 
