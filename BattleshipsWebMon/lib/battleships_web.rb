@@ -23,11 +23,11 @@ class BattleshipsWeb < Sinatra::Base
     $board ||= Board.new(Cell)
     $computer_board ||= Board.new(Cell)
     $opponent_board ||= Board.new(Cell)
+    $i ||= 1
     erb :board
   end
 
   post '/place_ship' do
-    $i ||= 1    # need to fix
     if $i <= 5
       $board.place(Ship.new($i), params[:coordinates].to_sym, params[:orientation].to_sym)
       $i += 1
@@ -57,8 +57,17 @@ class BattleshipsWeb < Sinatra::Base
   end
 
   get '/vs_computer' do
+    if $board.all_ships_sunk? || $computer_board.all_ships_sunk?
+      redirect to('result')  
+    end
     erb :vs_computer
   end
+
+  get '/result' do
+    erb :result
+  end
+
+
 
   get '/game_board' do
 

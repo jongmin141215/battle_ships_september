@@ -49,6 +49,12 @@ class Board
 		ships.count
 	end
 
+	def all_ships_sunk?
+		ships_array = ships.map do |ship|
+			ship.sunk?
+		end
+		ships_array.include?(false) ? false : true
+	end
 private
 
  	def next_coord(coord, orientation)

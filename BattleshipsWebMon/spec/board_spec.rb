@@ -90,6 +90,7 @@ describe Board do
 		expect{board.place(ship,:A1)}.to raise_error "You cannot place a ship on another ship"
 	end
 
+
 	xit "can place a ship randomly on the board" do
 		allow(Kernel).to receive(:rand).and_return(0)
 		expect(subject.place_ship_randomly(2)).to eq([:A1, :A2])

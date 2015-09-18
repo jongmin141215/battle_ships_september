@@ -1,8 +1,23 @@
 <div style="display: inline-block">
   <form action="/place_ship" method="post">
     <div>
-      Place ship:
-      <input type="text" name="coordinates">
+      <% case $i %>
+      <% when 1 %>
+        <%= 'Place your patrol boat' %>
+      <% when 2 %>
+        <%= 'Place your submarine' %>
+      <% when 3 %>
+        <%= 'Place your destroyer' %>
+      <% when 4 %>
+        <%= 'Place your battleship' %>
+      <% when 5 %>
+        <%= 'Place your aircraft carrier' %>
+      <% when 6 %>
+        <%= 'Press Start Game' %><br>
+        <a href="/computer_place_ship">Play with computer</a><br>
+        <a href="">Play with your friend</a><br><br>
+      <% end %>
+      <input type="text" name="coordinates" autofocus>
       <input type="radio" name="orientation" value="horizontally" checked> Horizontally
       <input type="radio" name="orientation" value="vertically"> Vertically
       <input type="submit" value="Place">
